@@ -1,0 +1,33 @@
+.datail {
+    padding: 9rem;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.img_detail {
+    width: 15%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.img_detail img {
+    width: 100%;
+}
+
+.pricipal_img {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+.pricipal_img img {
+    width: 70%;
+    height: auto;
+}
+
+.detail_name {
+    width: 30%;
+}

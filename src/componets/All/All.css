@@ -1,0 +1,32 @@
+.cards {
+    width: 80%;
+    margin: 8rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 28%);
+    column-gap: 4rem;
+    row-gap: 6rem;
+}
+
+.card {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    height: 25rem;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.226);
+}
+
+.card img {
+    height: 75%;
+}
+
+.about {
+    margin-top: 20px;
+    width: 100%;
+}
