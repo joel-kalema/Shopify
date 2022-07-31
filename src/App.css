@@ -5,11 +5,9 @@ header {
   justify-content: space-between;
   padding: 1rem 8rem;
   font-size: 12px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.685);
+  backdrop-filter: blur(3rem);
   width: 100%;
-}
-
-nav {
   z-index: 10000;
 }
 

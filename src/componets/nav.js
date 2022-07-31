@@ -9,16 +9,16 @@ class Nav extends React.Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to="/all">ALL</NavLink></li>
+                            <li><NavLink to="/">ALL</NavLink></li>
                             <li><NavLink to="/clothes">CLOTHES</NavLink></li>
                             <li><NavLink to="/tech">TECH</NavLink></li>
                         </ul>
                     </nav>
                     <div>
-                        <h1>Icon</h1>
+                        <img src="VSF.png" alt="logo"/>
                     </div>
                     <div>
-                        <h1>Basket</h1>
+                        <img src="Vector.png" alt=""/>
                     </div>
                 </header>
             </>

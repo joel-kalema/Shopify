@@ -1,1 +1,0 @@
-export const SELECT_PRODUCTS = 'SELECT_PRODUCTS'

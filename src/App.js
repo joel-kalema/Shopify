@@ -1,18 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Nav from "./componets/nav";
 import All from "./componets/All/allProducts";
-import {data} from './redux/reduces/data';
-import {URL} from './redux/reduces/reducer'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { data, URL } from './redux/reducers/data';
 import Tech from "./componets/Tech/TechProducts";
 import Clothes from "./componets/Clothes/ClothesProducts";
-import Detail from "./componets/Detail/Detail";
+import Detail from './componets/Detail/Detail';
 
 class App extends React.Component {
     constructor(props){
         super(props)
-        this.state = {posts:[], popUp: {}}
+        this.state = {posts:[], popUp: {}, basket: {}}
     }
 
     componentDidMount() {
@@ -28,9 +27,11 @@ class App extends React.Component {
             .then (result => this.setState({posts:result.data.categories}));
     }
 
+    
+
     setPopUp=(data)=> {
         this.setState({popUp: data})
-        console.log('data =>',data)
+        // console.log('data =>',data)
     }
 
     render() {
@@ -39,13 +40,14 @@ class App extends React.Component {
                 <Router>
                     <Nav />
                     <Routes>
-                        <Route path="/all" element={<All popUp={this.setPopUp} posts={this.state.posts} />}/>
+                        <Route path="/" element={<All popUp={this.setPopUp} posts={this.state.posts} basket={this.setbasket} />}/>
                         <Route path="/clothes" element={<Clothes posts={this.state.posts} popUp={this.setPopUp} />}/>
                         <Route path="/tech" element={<Tech posts={this.state.posts} popUp={this.setPopUp} />}/>
                         <Route path="/product/:productId" element={
                         <Detail 
-                           data={this.state.popUp}
-                           posts={this.state.posts}/>} />
+                            basket={this.setbasket}
+                            data={this.state.popUp}
+                            posts={this.state.posts}/>} />
                     </Routes>
                 </Router>
             </>
@@ -53,4 +55,4 @@ class App extends React.Component {
     }
 }
 
-export default App
+export default App;
