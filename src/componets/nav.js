@@ -1,9 +1,21 @@
 import React from "react";
+import {connect} from 'react-redux'
 import { NavLink } from "react-router-dom";
 import '../App.css';
 
 class Nav extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 0
+        };
+    }
+
+    // componentDidMount() {
+    //     this.props.cart();
+    // }
     render() {
+        console.log(this.state.count)
         return (
             <>
                 <header>
@@ -26,4 +38,8 @@ class Nav extends React.Component {
     }
 }
 
-export default Nav;
+const mapStateToProps = (state) => ({
+    cart: state.shop.cart
+})
+    
+  export default connect(mapStateToProps)(Nav);

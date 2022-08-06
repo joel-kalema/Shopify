@@ -4,7 +4,7 @@ import logger from "redux-logger";
 import { productReducer } from "./actions/actions_types";
 
 const reducer = combineReducers({
-    products: productReducer
+    shop: productReducer
 })
 
 const store = createStore(

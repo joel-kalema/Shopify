@@ -1,27 +1,34 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import { fetchProduct } from '../../redux/actions/actions_types';
 import Products from '../All/product';
 
 class Clothes extends React.Component {
+    componentDidMount() {
+        this.props.fetchData()
+      }
+
     render() {
         return(
             <>
-                <h2>CLOTHES</h2>
-                ¨{
-                    this.props.posts.length > 0 ? (
-                        <div className="cards">
-                    {this.props.posts.splice(-2, 1).map((product) => (
-                        <Products posts={product} key={product.id} popUp={this.props.popUp} />
+                <h2>All</h2>
+                <div className="cards">
+                    {this.props.products.splice(-2, 1).map((product) => (
+                    <Products products={product} />
                     ))}
                 </div>
-                    ):(
-                        <><h1>Error</h1></>
-                    )
-                }
-                
             </>
         )
     }
 }
 
-export default Clothes;
+const mapStateToProps = (state) => ({
+    products : state.shop.products
+  })
+  
+  const mapDispatch = (dispatch) => ({
+    fetchData : () => dispatch(fetchProduct())
+  })
+  
+  export default connect(mapStateToProps, mapDispatch)(Clothes);
 

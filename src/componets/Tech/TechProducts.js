@@ -1,14 +1,20 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import { fetchProduct } from '../../redux/actions/actions_types';
 import Products from '../All/product';
 
 class Tech extends React.Component {
+    componentDidMount() {
+        this.props.fetchData()
+      }
+
     render() {
         return(
             <>
                 <h1>TECH</h1>
                 <div className="cards">
-                    {this.props.posts.splice(-1, 2).map((product) => (
-                        <Products posts={product} key={product.id} popUp={this.props.popUp} />
+                    {this.props.products.splice(-1, 2).map((product) => (
+                        <Products products={product}/>
                 ))}
                 </div>
             </>
@@ -16,5 +22,13 @@ class Tech extends React.Component {
     }
 }
 
-export default Tech;
+const mapStateToProps = (state) => ({
+    products : state.shop.products
+  })
+  
+  const mapDispatch = (dispatch) => ({
+    fetchData : () => dispatch(fetchProduct())
+  })
+  
+  export default connect(mapStateToProps, mapDispatch)(Tech);
 
