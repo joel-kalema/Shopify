@@ -6,7 +6,8 @@ import './All.css';
 
 class Products extends React.Component {
     render() {
-        console.log(this.props.products)
+        console.log(this.props.prod)
+        console.log(this.props.cart)
         const {products} = this.props.products        
         return(
             <>
@@ -17,7 +18,7 @@ class Products extends React.Component {
                                 <img src={prod.gallery[0]} />
                             </div>
                             <div className="about">
-                                <div onClick={() => addToCart(prod.id)} className='bay_product'>
+                                <div onClick={() => this.props.addToCart(prod)} className='bay_product'>
                                     <img src='Vector02.png' alt='' />
                                 </div>
                                 <p>{prod.name}</p>
@@ -31,12 +32,8 @@ class Products extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    cart: state.shop.cart
-  })
-  
-const mapDispatch = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
     addToCart : (id) => dispatch(addToCart(id))
 })
   
-  export default connect(mapStateToProps, mapDispatch)(Products);
+  export default connect(null, mapDispatchToProps)(Products);

@@ -67,8 +67,6 @@ a {
 
 .bay_product:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.144);
-    width: 3.1rem;
-    height: 3.1rem;
 }
 
 .bay_product img {

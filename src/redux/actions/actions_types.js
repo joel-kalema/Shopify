@@ -39,37 +39,47 @@ export const adjustQt = (itemID, value) => ({
 export const productReducer = (state = inialeState, action) => {
     switch (action.type) {
         case actionType.GET_PRODUCTS:
+
             return {
                 ...state, products: action.payload
             }
+
         case actionType.ADD_TO_CART:
-            const item = state.products.find((prod) => prod.id === action.payload.id);
-            const isInCart = state.cart.find((prod) => prod.id === action.payload? true : false); 
+  
+            console.log('action',action.payload.id.id)
+            const item = state.products.find((prod) => prod.id === action.payload.id.id);
+            const isInCart = state.cart.find((item) => item.id === action.payload.id.id? true : false);
+            
             return {
                 ...state,
-                cart : isInCart
-                ? state.cart.map((item) => item.id === action.payload
-                ? {...item, qty: item.qty + 1} : item) :
-                [...state, {...item, qty: 1}]
+                cart: isInCart
+                ? state.cart.map((item) => item.id === action.payload.id.id ? {...item, qty: item.qty + 1} : item) 
+                : [ ...state.cart, { ...action.payload.id, qty: 1 } ]
             }
 
         case actionType.REMOVE_TO_CART:
+
             return {
                 ...state,
                 cart: state.cart.filter((item) => item.id === action.payload.id)
             }
+
         case actionType.ADJUST_QTY:
+
             return {
                 ...state,
                 cart : state.cart.map((item) => item.id === action.payload.id
                 ? {...item, qty: action.payload.qty} : 
                 item)
             }
+
         case actionType.LOAD_CARRENT_ITEM:
+
             return {
                 ...state,
                 currentItem: action.payload
             }
+
         default:
             return state
     }

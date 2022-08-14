@@ -7,7 +7,7 @@ import './All.css';
 class All extends React.Component {
     componentDidMount() {
         this.props.fetchData()
-      }
+    }
     render() {
         return(
             <>
@@ -24,12 +24,11 @@ class All extends React.Component {
 
 const mapStateToProps = (state) => ({
     products : state.shop.products,
-    cart: state.shop.cart
   })
   
-  const mapDispatch = (dispatch) => ({
+const mapDispatch = (dispatch) => ({
     fetchData : () => dispatch(fetchProduct()),
-  })
+})
   
   export default connect(mapStateToProps, mapDispatch)(All);
 

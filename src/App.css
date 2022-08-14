@@ -34,3 +34,7 @@ nav ul li .active {
   color: #5ECE7B;
   border-bottom: #5ECE7B 2px solid;
 }
+
+.add_cart {
+  border: 50%;
+}
