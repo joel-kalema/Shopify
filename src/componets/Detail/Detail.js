@@ -1,9 +1,10 @@
 import React from "react";
 import './Detail.css';
+import {connect} from "react-redux/es/exports";
 
 class Detail extends React.Component {
     render() {
-        const data =this.props.data;
+        const data =this.props.currentItem;
         return (
             <>
                 <div className="datail">
@@ -24,7 +25,7 @@ class Detail extends React.Component {
                             <h3>Price</h3>
                             <h3>{data.prices[0].currency.symbol}{data.prices[0].amount}</h3>
                         </div>
-                        <button type="button" onClick={() => {console.log(this.props.popUp(data))}}>ADD TO CARD</button>
+                        <button type="button">ADD TO CARD</button>
                         <p>{data.description}</p>
                     </div>
                 </div>
@@ -33,4 +34,8 @@ class Detail extends React.Component {
     }
 }
 
-export default Detail;
+const mapStateToProps = (state) => ({
+    currentItem: state.shop.currentItem
+})
+
+export default connect(mapStateToProps)(Detail);

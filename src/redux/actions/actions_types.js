@@ -36,6 +36,11 @@ export const adjustQt = (itemID, value) => ({
     }
 })
 
+export const loadCarrentItem = (item) => ({
+    type: actionType.LOAD_CARRENT_ITEM,
+    payload: item
+})
+
 export const productReducer = (state = inialeState, action) => {
     switch (action.type) {
         case actionType.GET_PRODUCTS:
@@ -45,8 +50,7 @@ export const productReducer = (state = inialeState, action) => {
             }
 
         case actionType.ADD_TO_CART:
-  
-            console.log('action',action.payload.id.id)
+
             const item = state.products.find((prod) => prod.id === action.payload.id.id);
             const isInCart = state.cart.find((item) => item.id === action.payload.id.id? true : false);
             

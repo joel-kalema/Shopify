@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
 import { addToCart } from '../../redux/actions/actions_types';
+import { loadCarrentItem } from '../../redux/actions/actions_types';
 import './All.css';
 
 
@@ -13,18 +15,20 @@ class Products extends React.Component {
             <>
                 {products.length > 0 ? (
                     products.map(prod => (
-                        <div className="card">
-                            <div className="card_img">
-                                <img src={prod.gallery[0]} />
-                            </div>
-                            <div className="about">
-                                <div onClick={() => this.props.addToCart(prod)} className='bay_product'>
-                                    <img src='Vector02.png' alt='' />
+                        <Link to={`/product/${prod.id}`}>
+                            <div onClick={() => this.props.loadCarrentItem(prod)} className="card">
+                                <div onClick={() => this.props.addToCart(prod)} className="card_img">
+                                    <img src={prod.gallery[0]} />
                                 </div>
-                                <p>{prod.name}</p>
-                                <h4>{prod.prices[0].currency.symbol} {prod.prices[0].amount}</h4>
+                                <div className="about">
+                                    <div className='bay_product'>
+                                        <img src='Vector02.png' alt='' />
+                                    </div>
+                                    <p>{prod.name}</p>
+                                    <h4>{prod.prices[0].currency.symbol} {prod.prices[0].amount}</h4>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                 ))
                 ) : <p>fetching Data</p>}
             </>
@@ -33,7 +37,8 @@ class Products extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addToCart : (id) => dispatch(addToCart(id))
+    addToCart : (id) => dispatch(addToCart(id)),
+    loadCarrentItem : (item) => dispatch(loadCarrentItem(item))
 })
   
   export default connect(null, mapDispatchToProps)(Products);

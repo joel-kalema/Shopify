@@ -5,7 +5,7 @@ import Nav from "./componets/nav";
 import All from "./componets/All/allProducts";
 import Tech from "./componets/Tech/TechProducts";
 import Clothes from "./componets/Clothes/ClothesProducts";
-// import Detail from './componets/Detail/Detail';
+import Detail from './componets/Detail/Detail';
 
 class App extends React.Component {
     render() {
@@ -17,7 +17,7 @@ class App extends React.Component {
                         <Route path="/" element={ <All /> } />
                         <Route path="/clothes" element={ <Clothes />}/>
                         <Route path="/tech" element={<Tech />}/>
-                        {/* <Route path="/product/:productId" element={ <Detail />} /> */}
+                        <Route path="/product/:id" element={ <Detail />} />
                     </Routes>
                 </Router>
             </>
