@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
-import { addToCart } from '../../redux/actions/actions_types';
 import { loadCarrentItem } from '../../redux/actions/actions_types';
 import './All.css';
 
@@ -17,7 +16,7 @@ class Products extends React.Component {
                     products.map(prod => (
                         <Link to={`/product/${prod.id}`}>
                             <div onClick={() => this.props.loadCarrentItem(prod)} className="card">
-                                <div onClick={() => this.props.addToCart(prod)} className="card_img">
+                                <div className="card_img">
                                     <img src={prod.gallery[0]} />
                                 </div>
                                 <div className="about">
@@ -37,8 +36,7 @@ class Products extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addToCart : (id) => dispatch(addToCart(id)),
-    loadCarrentItem : (item) => dispatch(loadCarrentItem(item))
+    loadCarrentItem : (item) => dispatch(loadCarrentItem(item)),
 })
   
   export default connect(null, mapDispatchToProps)(Products);

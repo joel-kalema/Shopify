@@ -1,6 +1,7 @@
 import React from "react";
 import './Detail.css';
 import {connect} from "react-redux/es/exports";
+import { addToCart } from '../../redux/actions/actions_types';
 
 class Detail extends React.Component {
     render() {
@@ -17,15 +18,15 @@ class Detail extends React.Component {
                             {data.attributes.map((att) => (
                                 <div>
                                     <h4>{att.name}</h4>
-                                    <div>{att.items.map((itm)=>(<p>{itm.displayValue}</p>))}</div>
+                                    <div className='sizes'>{att.items.map((itm)=>(<p className='size_item'>{itm.displayValue}</p>))}</div>
                                 </div>))
                             }
                         </div>
                         <div>
                             <h3>Price</h3>
-                            <h3>{data.prices[0].currency.symbol}{data.prices[0].amount}</h3>
+                            <h4>{data.prices[0].currency.symbol}{data.prices[0].amount}</h4>
                         </div>
-                        <button type="button">ADD TO CARD</button>
+                        <button type="button" className='add_to_carb_btn'  onClick={() => this.props.addToCart(data)}>ADD TO CARD</button>
                         <p>{data.description}</p>
                     </div>
                 </div>
@@ -34,8 +35,12 @@ class Detail extends React.Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    addToCart : (id) => dispatch(addToCart(id))
+})
+
 const mapStateToProps = (state) => ({
     currentItem: state.shop.currentItem
 })
 
-export default connect(mapStateToProps)(Detail);
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);

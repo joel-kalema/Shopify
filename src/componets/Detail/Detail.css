@@ -1,3 +1,11 @@
+.detail_name h3 {
+    margin: .5rem 0;
+}
+
+.detail_name h4 {
+    margin-top: .6rem 0;
+}
+
 .datail {
     padding: 9rem;
     display: flex;
@@ -6,13 +14,13 @@
 }
 
 .img_detail {
-    width: 15%;
+    width: 10%;
     height: 100%;
     overflow-y: auto;
 }
 
 .img_detail img {
-    width: 100%;
+    width: 90%;
 }
 
 .pricipal_img {
@@ -24,10 +32,36 @@
 }
 
 .pricipal_img img {
-    width: 70%;
+    width: 60%;
     height: auto;
 }
 
 .detail_name {
     width: 30%;
+}
+
+.add_to_carb_btn {
+    background-color: #5ECE7B;
+    color: #fff;
+    margin: 1.5rem 0;
+    border: none;
+    padding: .5rem 3rem;
+}
+
+.sizes {
+    width: 80%;
+    display: flex;
+}
+
+.sizes p:nth-child(n+1) {
+    margin-left: .6rem;
+}
+
+.size_item {
+    margin: .6rem 0;
+}
+
+.size_item_color {
+    width: 20px;
+    height: 20px;
 }
