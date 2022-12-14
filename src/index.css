@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 * {
   box-sizing: border-box;
@@ -6,6 +7,11 @@
   padding: 0;
 }
 body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h5 {
   font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
 }
 

@@ -5,6 +5,12 @@ import {connect} from "react-redux/es/exports";
 class Cart extends React.Component {
     render () {
         console.log(this.props.cart)
+        let sumqt = 0;
+        let sumqtValue = 0;
+        let sumprice = 0;
+        let sumpriceValue = 0;
+        this.props.cart.map((qt) => sumqtValue = sumqt +=qt.qty)
+        this.props.cart.map((price) => sumpriceValue = sumprice +=price.prices[0].amount)
         return (
             <div>
                 <div className="cart">
@@ -15,6 +21,7 @@ class Cart extends React.Component {
                                 <div className="cart_datails">
                                     <h3>{itm.name}</h3>
                                     <p>{itm.brand}</p>
+                                    <h5>{itm.prices[0].currency.symbol} {itm.prices[0].amount}</h5>
                                     {itm.attributes.map((att) => (
                                         <div>
                                             <h4>{att.name}</h4>
@@ -35,9 +42,9 @@ class Cart extends React.Component {
                         ))
                     }
                     <div className="cart_total">
-                        {this.props.cart.map((qt, sum) =>
-                            (<p>{ sum += qt.qty}</p>)
-                        )}
+                        <p>Quantity: {sumqtValue}</p>
+                        <p>Total: <h5>{sumpriceValue}</h5></p>
+                        <button>ORDER</button>
                     </div>
                 </div>
             </div>

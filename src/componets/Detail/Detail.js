@@ -24,7 +24,7 @@ class Detail extends React.Component {
                         </div>
                         <div>
                             <h3>Price</h3>
-                            <h4>{data.prices[0].currency.symbol}{data.prices[0].amount}</h4>
+                            <h5>{data.prices[0].currency.symbol}{data.prices[0].amount}</h5>
                         </div>
                         <button type="button" className='add_to_carb_btn'  onClick={() => this.props.addToCart(data)}>ADD TO CARD</button>
                         <p>{data.description}</p>
